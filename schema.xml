@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="Ability" idMethod="native" phpName="Ability">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="class_id" phpName="ClassId" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="INTEGER" required="true"/>
+    <column name="element" phpName="Element" type="INTEGER" required="true"/>
+    <column name="effect_1" phpName="Effect1" type="TINYINT"/>
+    <column name="effect_2" phpName="Effect2" type="TINYINT"/>
+    <column name="effect_3" phpName="Effect3" type="TINYINT"/>
+    <column name="str" phpName="Str" type="INTEGER" required="true"/>
+    <column name="dex" phpName="Dex" type="INTEGER" required="true"/>
+    <column name="mag" phpName="Mag" type="INTEGER" required="true"/>
+    <column name="def" phpName="Def" type="INTEGER" required="true"/>
+    <column name="eva" phpName="Eva" type="INTEGER" required="true"/>
+    <column name="res" phpName="Res" type="INTEGER" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Account" idMethod="native" phpName="Account">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="username" phpName="Username" type="VARCHAR" size="11" required="true"/>
+    <column name="password_hash" phpName="PasswordHash" type="VARCHAR" size="128" required="true"/>
+    <column name="last_active" phpName="LastActive" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="guild_id" phpName="GuildId" type="INTEGER"/>
+    <column name="inventory_size" phpName="InventorySize" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="gold" phpName="Gold" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="experience" phpName="Experience" type="INTEGER" required="true" defaultValue="0"/>
+    <unique name="username">
+      <unique-column name="username"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Armor" idMethod="native" phpName="Armor">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="str" phpName="Str" type="INTEGER" required="true"/>
+    <column name="dex" phpName="Dex" type="INTEGER" required="true"/>
+    <column name="mag" phpName="Mag" type="INTEGER" required="true"/>
+    <column name="def" phpName="Def" type="INTEGER" required="true"/>
+    <column name="eva" phpName="Eva" type="INTEGER" required="true"/>
+    <column name="res" phpName="Res" type="INTEGER" required="true"/>
+    <column name="image_file" phpName="ImageFile" type="INTEGER"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Character" idMethod="native" phpName="Character">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="class_id" phpName="ClassId" type="INTEGER" required="true"/>
+    <column name="level" phpName="Level" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="account_id" phpName="AccountId" type="INTEGER" required="true"/>
+    <column name="main_hand" phpName="MainHand" type="INTEGER"/>
+    <column name="off_hand" phpName="OffHand" type="INTEGER"/>
+    <column name="head" phpName="Head" type="INTEGER"/>
+    <column name="body" phpName="Body" type="INTEGER"/>
+    <column name="legs" phpName="Legs" type="INTEGER"/>
+    <column name="hands" phpName="Hands" type="INTEGER"/>
+    <column name="feet" phpName="Feet" type="INTEGER"/>
+    <column name="ability_1" phpName="Ability1" type="INTEGER" required="true"/>
+    <column name="ability_2" phpName="Ability2" type="INTEGER" required="true"/>
+    <column name="ability_3" phpName="Ability3" type="INTEGER" required="true"/>
+    <column name="ability_4" phpName="Ability4" type="INTEGER" required="true"/>
+    <column name="ability_5" phpName="Ability5" type="INTEGER" required="true"/>
+    <column name="current_node" phpName="CurrentNode" type="INTEGER" required="true"/>
+    <column name="current_exp" phpName="CurrentExp" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="party_id" phpName="PartyId" type="INTEGER"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="ChatRoom" idMethod="native" phpName="Chatroom">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="64" required="true"/>
+    <column name="messages" phpName="Messages" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Class" idMethod="native" phpName="Class">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="str" phpName="Str" type="INTEGER" required="true"/>
+    <column name="dex" phpName="Dex" type="INTEGER" required="true"/>
+    <column name="mag" phpName="Mag" type="INTEGER" required="true"/>
+    <column name="def" phpName="Def" type="INTEGER" required="true"/>
+    <column name="eva" phpName="Eva" type="INTEGER" required="true"/>
+    <column name="res" phpName="Res" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Consumables" idMethod="native" phpName="Consumables">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Efftect" idMethod="native" phpName="Efftect">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="level" phpName="Level" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Element" idMethod="native" phpName="Element">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="weakness" phpName="Weakness" type="INTEGER" required="true"/>
+    <column name="strong_against" phpName="StrongAgainst" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Enemy" idMethod="native" phpName="Enemy">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="level" phpName="Level" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="ability_1" phpName="Ability1" type="INTEGER" required="true"/>
+    <column name="ability_2" phpName="Ability2" type="INTEGER" required="true"/>
+    <column name="ability_3" phpName="Ability3" type="INTEGER" required="true"/>
+    <column name="str" phpName="Str" type="INTEGER" required="true"/>
+    <column name="dex" phpName="Dex" type="INTEGER" required="true"/>
+    <column name="mag" phpName="Mag" type="INTEGER" required="true"/>
+    <column name="def" phpName="Def" type="INTEGER" required="true"/>
+    <column name="eva" phpName="Eva" type="INTEGER" required="true"/>
+    <column name="res" phpName="Res" type="INTEGER" required="true"/>
+    <column name="region_id" phpName="RegionId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="EnemyAbility" idMethod="native" phpName="Enemyability">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="INTEGER" required="true"/>
+    <column name="element" phpName="Element" type="INTEGER" required="true"/>
+    <column name="effect_1" phpName="Effect1" type="TINYINT"/>
+    <column name="effect_2" phpName="Effect2" type="TINYINT"/>
+    <column name="effect_3" phpName="Effect3" type="TINYINT"/>
+    <column name="str" phpName="Str" type="INTEGER" required="true"/>
+    <column name="dex" phpName="Dex" type="INTEGER" required="true"/>
+    <column name="mag" phpName="Mag" type="INTEGER" required="true"/>
+    <column name="def" phpName="Def" type="INTEGER" required="true"/>
+    <column name="eva" phpName="Eva" type="INTEGER" required="true"/>
+    <column name="res" phpName="Res" type="INTEGER" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="GameItem" idMethod="native" phpName="Gameitem">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="24" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="GlobalChat" idMethod="native" phpName="Globalchat">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="account_id" phpName="AccountId" type="INTEGER" required="true"/>
+    <column name="message" phpName="Message" type="LONGVARCHAR" required="true"/>
+    <column name="time_posted" phpName="TimePosted" type="TIMESTAMP" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Guild" idMethod="native" phpName="Guild">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="number_of_members" phpName="NumberOfMembers" type="INTEGER" required="true" defaultValue="1"/>
+    <column name="chat_room_id" phpName="ChatRoomId" type="INTEGER" required="true"/>
+    <column name="guild_leader_id" phpName="GuildLeaderId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Guild Bank" idMethod="native" phpName="Guild bank">
+    <column name="guild_id" phpName="GuildId" type="INTEGER" required="true"/>
+    <column name="item_id" phpName="ItemId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Inventory" idMethod="native" phpName="Inventory">
+    <column name="account_id" phpName="AccountId" type="INTEGER" required="true"/>
+    <column name="item_id" phpName="ItemId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Mailbox" idMethod="native" phpName="Mailbox">
+    <column name="to" phpName="To" type="INTEGER" required="true"/>
+    <column name="from" phpName="From" type="INTEGER" required="true"/>
+    <column name="message" phpName="Message" type="LONGVARCHAR" required="true"/>
+    <column name="item_id" phpName="ItemId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Map" idMethod="native" phpName="Map">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="image_file" phpName="ImageFile" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="MapNode" idMethod="native" phpName="Mapnode">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="region_id" phpName="RegionId" type="INTEGER" required="true"/>
+    <column name="map_id" phpName="MapId" type="INTEGER" required="true"/>
+    <column name="node_number" phpName="NodeNumber" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="NodeConnection" idMethod="native" phpName="Nodeconnection">
+    <column name="node_from" phpName="NodeFrom" type="INTEGER" required="true"/>
+    <column name="node_to" phpName="NodeTo" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Party" idMethod="native" phpName="Party">
+    <column name="id" phpName="Id" type="INTEGER" required="true"/>
+    <column name="party_leader" phpName="PartyLeader" type="INTEGER" required="true"/>
+    <column name="messages" phpName="Messages" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Region" idMethod="native" phpName="Region">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="map_id" phpName="MapId" type="INTEGER" required="true"/>
+    <column name="level" phpName="Level" type="INTEGER" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="Weapon" idMethod="native" phpName="Weapon">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="str" phpName="Str" type="INTEGER" required="true"/>
+    <column name="dex" phpName="Dex" type="INTEGER" required="true"/>
+    <column name="mag" phpName="Mag" type="INTEGER" required="true"/>
+    <column name="def" phpName="Def" type="INTEGER" required="true"/>
+    <column name="eva" phpName="Eva" type="INTEGER" required="true"/>
+    <column name="res" phpName="Res" type="INTEGER" required="true"/>
+    <column name="image_file" phpName="ImageFile" type="INTEGER"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="32" required="true"/>
+    <column name="level" phpName="Level" type="TINYINT" required="true" defaultValue="1"/>
+    <column name="two-handed" phpName="Two-handed" type="BOOLEAN" size="1" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+</database>
